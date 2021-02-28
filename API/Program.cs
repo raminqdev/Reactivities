@@ -22,6 +22,7 @@ namespace API
             {
                 var context = services.GetRequiredService<DataContext>();
                 context.Database.Migrate();
+                
             }
             catch (Exception ex)
             {
