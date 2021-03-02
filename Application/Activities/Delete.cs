@@ -1,16 +1,16 @@
-﻿using Domain;
-using MediatR;
+﻿using MediatR;
 using Persistence;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace Application.Activities
 {
-    public class Create
+    public class Delete
     {
         public class Command : IRequest
         {
-            public Activity Activity { get; set; }
+            public Guid Id { get; set; }
         }
 
         public class Handler : IRequestHandler<Command>
@@ -24,13 +24,14 @@ namespace Application.Activities
 
             public async Task<Unit> Handle(Command request, CancellationToken cancellationToken)
             {
-                _context.Add(request.Activity);
+                var activity = await _context.Activities.FindAsync(request.Id);
+
+                _context.Remove(activity);
 
                 await _context.SaveChangesAsync();
-                
+
                 return Unit.Value;
             }
         }
     }
-
 }
