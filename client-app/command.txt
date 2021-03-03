@@ -1,0 +1,9 @@
+
+
+To format (make "pretty") all the code in a given file you can use       Shift + Alt + F     on Windows
+
+
+ copy line down                                                         shift + alt + down
+
+
+ 
