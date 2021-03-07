@@ -9,4 +9,7 @@ How can I find a file by name in Visual Studio Code      Ctrl + P
 
 
 
-  npm install mobx mobx-react-lite 
+npm install mobx mobx-react-lite 
+
+npm install react-router-dom
+npm install @types/react-router-dom --save-dev

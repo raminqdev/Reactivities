@@ -23,10 +23,10 @@ export default class ActivityStore {
 
   loadActivities = async () => {
     try {
+      this.loadingInitial = true;
       const activities = await agent.Activities.list();
       activities.forEach(activity => {
-        activity.date = activity.date.split('T')[0];
-        this.activityRegistry.set(activity.id, activity);
+        this.setActivityDate(activity);
       })
       this.setLoadingIntial(false);
     } catch (error) {
@@ -35,25 +35,35 @@ export default class ActivityStore {
     }
   }
 
+  loadActivity = async (id: string) => {
+    let activity = this.getActivity(id);
+    if (activity) {
+      this.selectedActivity = activity;
+    } else {
+      this.loadingInitial = true;
+      try {
+        activity = await agent.Activities.details(id);
+        this.setActivityDate(activity);
+        this.selectedActivity = activity;
+        this.setLoadingIntial(false);
+      } catch (error) {
+        console.log(error);
+        this.setLoadingIntial(false);
+      }
+    }
+  }
+
+  private setActivityDate(activity: Activity) {
+    activity.date = activity.date.split('T')[0];
+    this.activityRegistry.set(activity.id, activity);
+  }
+
+  private getActivity = (id: string) => {
+    return this.activityRegistry.get(id);
+  }
+
   setLoadingIntial = (state: boolean) => {
     this.loadingInitial = state;
-  }
-
-  selectActivity = (id: string) => {
-    this.selectedActivity = this.activityRegistry.get(id);
-  }
-
-  cancelSelectedActivity = () => {
-    this.selectedActivity = undefined;
-  }
-
-  openForm = (id?: string) => {
-    id ? this.selectActivity(id) : this.cancelSelectedActivity();
-    this.editMode = true;
-  }
-
-  closeForm = () => {
-    this.editMode = false;
   }
 
   createActivity = async (activity: Activity) => {
@@ -100,8 +110,6 @@ export default class ActivityStore {
       await agent.Activities.delete(id);
       runInAction(() => {
         this.activityRegistry.delete(id);
-        if (this.selectedActivity?.id === id)
-          this.cancelSelectedActivity();
         this.loading = false;
       })
     } catch (error) {
