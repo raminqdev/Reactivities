@@ -20,6 +20,18 @@ export default class ActivityStore {
       .sort((a, b) => Date.parse(a.date) - Date.parse(b.date));
   }
 
+  //computed property, grouping activities by date
+  get groupedActivities() {
+    return Object.entries(
+      // help : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
+      this.activitiesSortByDate.reduce((tempActivities, activity) => {
+        const date = activity.date;
+        tempActivities[date] = tempActivities[date] ? [...tempActivities[date], activity] : [activity];
+        return tempActivities;
+      }, {} as { [key: string]: Activity[] })
+    )
+  }
+
 
   loadActivities = async () => {
     try {
