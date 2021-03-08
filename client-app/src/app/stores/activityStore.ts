@@ -44,7 +44,9 @@ export default class ActivityStore {
       try {
         activity = await agent.Activities.details(id);
         this.setActivityDate(activity);
-        this.selectedActivity = activity;
+        runInAction(() => {
+          this.selectedActivity = activity;
+        });
         this.setLoadingIntial(false);
       } catch (error) {
         console.log(error);

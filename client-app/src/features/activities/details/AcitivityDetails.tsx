@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react-lite';
 import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router';
 import { Button, Card, Image } from 'semantic-ui-react';
 import LoadingComponent from '../../../app/layout/LoadingComponent';
 import { useStore } from '../../../app/stores/store';
@@ -9,6 +9,7 @@ export default observer(function ActivityDetails() {
 
   const { activityStore } = useStore();
   const { selectedActivity: activity, loadActivity, loadingInitial } = activityStore;
+
   const { id } = useParams<{ id: string }>();
 
   useEffect(() => {

@@ -3,10 +3,11 @@ import { Container } from 'semantic-ui-react';
 import NavBar from './NavBar';
 import ActivityDashboard from '../../features/activities/dashboard/ActivityDashboard';
 import { observer } from 'mobx-react-lite';
-import { Route } from 'react-router';
 import HomePage from '../../features/home/HomePage';
 import ActivityForm from '../../features/activities/form/ActivityForm';
 import ActivityDetails from '../../features/activities/details/AcitivityDetails';
+import { Route } from 'react-router';
+
 
 export default observer(function App() {
   return (
