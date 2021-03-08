@@ -16,3 +16,5 @@ npm install @types/react-router-dom --save-dev
 
  npm install react-calendar
  npm install @types/react-calendar
+
+ npm install react-toastify  
