@@ -5,6 +5,8 @@ To format (make "pretty") all the code in a given file you can use       Shift +
 copy line down        shift + alt + down
 
 How can I find a file by name in Visual Studio Code      Ctrl + P
+
+select all same words          Ctrl + d  and select word with mouse
  
 
 
@@ -18,3 +20,14 @@ npm install @types/react-router-dom --save-dev
  npm install @types/react-calendar
 
  npm install react-toastify  
+
+ npm install formik 
+
+ npm install yup --save
+ npm install @types/yup --save-dev
+
+
+ npm install react-datepicker
+ npm install @types/react-datepicker --save-dev
+ npm ls date-fns
+ npm install date-fns@2.19.0

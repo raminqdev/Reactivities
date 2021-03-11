@@ -1,4 +1,7 @@
-﻿dotnet ef migrations add InitialCreation -p Persistence -s API
+﻿http://localhost:5000/swagger/index.html
+
+
+dotnet ef migrations add InitialCreation -p Persistence -s API
 
 
 dotnet ef database drop -s .\API\ -p .\Persistence\

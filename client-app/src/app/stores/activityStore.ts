@@ -1,3 +1,4 @@
+import { format } from "date-fns";
 import { makeAutoObservable, runInAction } from "mobx";
 import agent from "../api/agent";
 import { Activity } from "../models/activity";
@@ -8,7 +9,7 @@ export default class ActivityStore {
   selectedActivity: Activity | undefined = undefined;
   editMode = false;
   loading = false;
-  loadingInitial = true;
+  loadingInitial = false;
 
   constructor() {
     makeAutoObservable(this)
@@ -17,7 +18,7 @@ export default class ActivityStore {
   //computed property
   get activitiesSortByDate() {
     return Array.from(this.activityRegistry.values())
-      .sort((a, b) => Date.parse(a.date) - Date.parse(b.date));
+      .sort((a, b) => a.date!.getTime() - b.date!.getTime());
   }
 
   //computed property, grouping activities by date
@@ -25,12 +26,12 @@ export default class ActivityStore {
     return Object.entries(
       // help : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/Reduce
       this.activitiesSortByDate.reduce((tempActivities, activity) => {
-        const date = activity.date;
+        const date = format(activity.date!, 'dd MMM yyyy');
         tempActivities[date] = tempActivities[date] ? [...tempActivities[date], activity] : [activity];
         return tempActivities;
       }, {} as { [key: string]: Activity[] })
     )
-  }
+  } 
 
 
   loadActivities = async () => {
@@ -70,7 +71,7 @@ export default class ActivityStore {
   }
 
   private setActivityDate(activity: Activity) {
-    activity.date = activity.date.split('T')[0];
+    activity.date = new Date(activity.date!);
     this.activityRegistry.set(activity.id, activity);
   }
 

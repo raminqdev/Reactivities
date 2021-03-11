@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "formik": "^2.2.6",
     "mobx": "^6.1.8",
     "mobx-react-lite": "^3.2.0",
     "react-router-dom": "^5.2.0"
