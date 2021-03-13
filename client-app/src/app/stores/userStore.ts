@@ -23,6 +23,7 @@ export default class UserStore {
       store.commonStore.setToken(user.token);
       runInAction(() => this.user = user);
       history.push('/activities');
+      store.modalStore.closeModal();
     } catch (error) {
       throw error;
     }
@@ -45,5 +46,5 @@ export default class UserStore {
   }
 
 
-  
+
 }
