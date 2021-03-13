@@ -13,7 +13,7 @@ namespace API.Controllers
 {
     [AllowAnonymous]
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api/[controller]")]             
     public class AccountController : ControllerBase
     {
         private readonly UserManager<AppUser> _userManager;

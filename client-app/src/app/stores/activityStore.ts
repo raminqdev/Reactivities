@@ -31,7 +31,7 @@ export default class ActivityStore {
         return tempActivities;
       }, {} as { [key: string]: Activity[] })
     )
-  } 
+  }
 
 
   loadActivities = async () => {
