@@ -40,7 +40,7 @@ namespace API.Controllers
 
             if (result.Succeeded)
             {
-                return CreateUserDTOObject(user);
+                return CreateUserDtoObject(user);
             }
 
             return Unauthorized();
@@ -70,7 +70,7 @@ namespace API.Controllers
 
             if (result.Succeeded)
             {
-                return CreateUserDTOObject(user);
+                return CreateUserDtoObject(user);
             }
 
             return BadRequest("Problem registering user");
@@ -83,10 +83,10 @@ namespace API.Controllers
         {
             var user = await _userManager.FindByEmailAsync(User.FindFirstValue(ClaimTypes.Email));
 
-            return CreateUserDTOObject(user);
+            return CreateUserDtoObject(user);
         }
 
-        private UserDto CreateUserDTOObject(AppUser user)
+        private UserDto CreateUserDtoObject(AppUser user)
         {
             return new UserDto
             {
