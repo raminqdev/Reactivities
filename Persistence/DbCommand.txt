@@ -1,7 +1,16 @@
 ﻿http://localhost:5000/swagger/index.html
 
 
+
+dotnet new classlib -n Infrastracture
+dotnet sln add Infrastracture
+dotnet add reference ../Application
+dotnet add reference ../Infrastracture
+dotnet restore
+
+
+
 dotnet ef migrations add InitialCreation -p Persistence -s API
-
-
+dotnet ef migrations remove -p Persistence -s API
 dotnet ef database drop -s .\API\ -p .\Persistence\
+
