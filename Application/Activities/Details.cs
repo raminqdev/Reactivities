@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
+using Domain;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Activities
@@ -14,7 +15,7 @@ namespace Application.Activities
     {
         public class Query : IRequest<Result<ActivityDto>>
         {
-            public Guid Id { get; set; }
+            public Guid Id { get; set; } = Guid.Parse("0f2d4992-2b54-490e-b2dc-7284209565b3");
         }
 
         public class Handler : IRequestHandler<Query, Result<ActivityDto>>
