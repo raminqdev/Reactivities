@@ -11,6 +11,7 @@ namespace Application.Core
         {
             CreateMap<Activity, Activity>();
 
+
             CreateMap<Activity, ActivityDto>()
                 .ForMember(destination => destination.HostUsername,
                     options
