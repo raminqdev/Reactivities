@@ -1,0 +1,4 @@
+Our application layer does not know about authentication. 
+
+we need to take the token and interogate a user from token. 
+so we do this outside of application in infrastructure later
