@@ -13,8 +13,8 @@ import ServerError from '../../features/errors/ServerError';
 import LoginForm from '../../features/users/LoginForm';
 import { useStore } from '../stores/store';
 import LoadingComponent from './LoadingComponent';
-import ModalContainer from '../common/modals/ModalContainer';
 import { observer } from 'mobx-react-lite';
+import ModalContainer from '../common/modals/ModalContainer';
 
 
 export default observer(function App() {
