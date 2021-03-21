@@ -1,12 +1,9 @@
 
 
 To format (make "pretty") all the code in a given file you can use       Shift + Alt + F     on Windows
-
-copy line down        shift + alt + down
-
-How can I find a file by name in Visual Studio Code      Ctrl + P
-
-select all same words          Ctrl + d  and select word with mouse
+copy line down                                                           shift + alt + down
+How can I find a file by name in Visual Studio Code                      Ctrl + P
+select all same words                                                    Ctrl + d  and select word with mouse
  
 
 
