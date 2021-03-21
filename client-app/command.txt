@@ -10,6 +10,8 @@ select all same words          Ctrl + d  and select word with mouse
  
 
 
+React Developer Tools chrome extensions
+
 
 npm install mobx mobx-react-lite 
 
