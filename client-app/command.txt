@@ -5,7 +5,7 @@ copy line down                                                           shift +
 How can I find a file by name in Visual Studio Code                      Ctrl + P
 select all same words                                                    Ctrl + d  and select word with mouse
  
-
+-----------------------------------------------------------------------------
 
 React Developer Tools chrome extensions
 
