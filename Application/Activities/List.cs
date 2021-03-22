@@ -1,5 +1,4 @@
 ﻿using Application.Core;
-using Domain;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using Persistence;

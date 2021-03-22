@@ -6,7 +6,6 @@ using System.Threading;
 using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
-using Domain;
 using Microsoft.EntityFrameworkCore;
 
 namespace Application.Activities
