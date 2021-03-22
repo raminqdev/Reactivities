@@ -2,10 +2,11 @@
 using Application.Activities;
 using Application.Photos;
 using Microsoft.AspNetCore.Mvc;
+using Delete = Application.Photos.Delete;
 
 namespace API.Controllers
 {
-    public class PhotosController: BaseApiController
+    public class PhotosController : BaseApiController
     {
         [HttpPost]
         public async Task<IActionResult> Add([FromForm] Add.Command command)
@@ -13,12 +14,12 @@ namespace API.Controllers
             return HandleResult(await Mediator.Send(command));
         }
 
-        // [HttpDelete("{id}")]
-        // public async Task<IActionResult> Delete(string id)
-        // {
-        //     return HandleResult(await Mediator.Send(new Delete.Command{Id = id}));
-        // }
-        //
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(string id)
+        {
+            return HandleResult(await Mediator.Send(new Delete.Command {Id = id}));
+        }
+
         // [HttpPost("{id}/setMain")]
         // public async Task<IActionResult> SetMain(string id)
         // {
