@@ -6,10 +6,12 @@ How can I find a file by name in Visual Studio Code                      Ctrl + 
 select all same words                                                    Ctrl + d  and select word with mouse
  
 -----------------------------------------------------------------------------
+React Developer Tools (chrome extensions)
+ES7 React/Redux/GraphQL/React-Native snippets  (vs code extension) for rfce 
 
-React Developer Tools chrome extensions
-
-
+File -> Auto Save
+File -> Prefrences -> Keyboard Shortcuts
+-----------------------------------------------------------------------------
 npm install mobx mobx-react-lite 
 
 npm install react-router-dom

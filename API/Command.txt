@@ -1,7 +1,7 @@
 ﻿http://localhost:5000/swagger/index.html
 
 
-
+-----------------------------------------------------------
 dotnet new classlib -n Infrastracture
 dotnet sln add Infrastracture
 dotnet add reference ../Application
@@ -9,10 +9,18 @@ dotnet add reference ../Infrastracture
 dotnet restore
 
 
-
+------------------------------------------------------------
 dotnet ef migrations add InitialCreation -p Persistence -s API
 dotnet ef migrations remove -p Persistence -s API
 dotnet ef database drop -p .\Persistence\ -s .\API\ 
 
  p:persistence project 
  s:startup project
+
+
+-----------------------------------------------------------
+for debuging in vs code
+
+1- we need .vscode file ---> ctrl+shift+p --> generate assets for build and debuging
+2- press run and debug button 
+3- choose .Net Core Attach  ---> hit run -->search for  "Api.exe" ---> hit enter
