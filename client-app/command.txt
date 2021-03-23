@@ -32,3 +32,7 @@ npm install @types/react-router-dom --save-dev
  npm install @types/react-datepicker --save-dev
  npm ls date-fns
  npm install date-fns@2.19.0
+
+ npm install  react-dropzone
+
+ npm install  react-cropper

@@ -2,7 +2,7 @@ import axios, { AxiosError, AxiosResponse } from 'axios';
 import { toast } from 'react-toastify';
 import { history } from '../..';
 import { Activity, ActivityFormValues } from '../models/activity';
-import { Profile } from '../models/profile';
+import { Photo, Profile } from '../models/profile';
 import { User, UserFormValues } from '../models/user';
 import { store } from '../stores/store';
 
@@ -88,7 +88,17 @@ const Account = {
 }
 
 const Profiles = {
-  get: (username: string) => requests.get<Profile>(`/profiles/${username}`)
+  get: (username: string) => requests.get<Profile>(`/profiles/${username}`),
+  //upload image, we need to get form data and send to our api
+  uploadPhoto: (file: Blob) => {
+    let formData = new FormData();
+    formData.append('File', file);  //'File' name should match to name in backend API
+    return axios.post<Photo>('photos', formData, {
+      headers: { 'Content-type': 'multipart/form-data' }
+    });
+  },
+  setMainPhoto: (id: string) => requests.post(`/photos/${id}/setmain`, {}),
+  deletePhoto: (id: string) => requests.del(`/photos/${id}`)
 }
 
 const agent = {
