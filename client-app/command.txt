@@ -36,3 +36,5 @@ npm install @types/react-router-dom --save-dev
  npm install  react-dropzone
 
  npm install  react-cropper
+
+ npm install @microsoft/signalr
