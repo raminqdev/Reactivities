@@ -10,8 +10,6 @@ interface Props {
 }
 
 function ActivityListItem({ activity }: Props) {
-  console.log(activity.host?.image);
-
   return (
     <Segment.Group>
       <Segment>
