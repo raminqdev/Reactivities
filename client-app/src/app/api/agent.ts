@@ -4,6 +4,7 @@ import { history } from '../..';
 import { Activity, ActivityFormValues } from '../models/activity';
 import { Photo, Profile } from '../models/profile';
 import { User, UserFormValues } from '../models/user';
+import { PaginatedResult } from '../models/pagination';
 import { store } from '../stores/store';
 
 const sleep = (delay: number) => {
@@ -22,7 +23,12 @@ axios.interceptors.request.use(config => {
 })
 
 axios.interceptors.response.use(async response => {
-  await sleep(500);
+  await sleep(500)
+  const pagination = response.headers['pagination'];
+  if (pagination) {
+    response.data = new PaginatedResult(response.data, JSON.parse(pagination));
+    return response as AxiosResponse<PaginatedResult<any>>;
+  }
   return response;
   //any thing that is not 200 is going
   // to be error response and we get rejectd
@@ -72,7 +78,8 @@ const requests = {
 }
 
 const Activities = {
-  list: () => requests.get<Activity[]>('/activities'),
+  list: (params: URLSearchParams) => axios.get<PaginatedResult<Activity[]>>('/activities', { params })
+    .then(responseBody),
   details: (id: string) => requests.get<Activity>(`/activities/${id}`),
   create: (activity: ActivityFormValues) => requests.post<void>('/activities', activity),
   update: (activity: ActivityFormValues) => requests.put<void>(`/activities/${activity.id}`, activity),

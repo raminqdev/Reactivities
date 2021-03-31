@@ -37,14 +37,11 @@ namespace Application.Activities
                 var query = _context.Activities
                     .OrderBy(a => a.Date)
                     .ProjectTo<ActivityDto>(_mapper.ConfigurationProvider,
-                        new {currentUsername = _userAccessor.GetUsername()})
+                        new { currentUsername = _userAccessor.GetUsername() })
                     .AsQueryable();
 
-
-                return Result<PagedList<ActivityDto>>.Success(
-                    await PagedList<ActivityDto>.CreateAsync(query, request.Params.PageNumber,
-                        request.Params.PageSize)
-                );
+                return Result<PagedList<ActivityDto>>.Success(await PagedList<ActivityDto>
+                    .CreateAsync(query, request.Params.PageNumber, request.Params.PageSize));
             }
         }
     }

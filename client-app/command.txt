@@ -27,7 +27,6 @@ npm install @types/react-router-dom --save-dev
  npm install yup --save
  npm install @types/yup --save-dev
 
-
  npm install react-datepicker
  npm install @types/react-datepicker --save-dev
  npm ls date-fns
@@ -38,3 +37,6 @@ npm install @types/react-router-dom --save-dev
  npm install  react-cropper
 
  npm install @microsoft/signalr
+
+ npm install react-infinite-scroller
+ npm install @types/react-infinite-scroller
