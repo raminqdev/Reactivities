@@ -22,7 +22,7 @@ export default class ActivityStore {
 
     //Reaction
     reaction(
-      () => this.predicate.keys,
+      () => this.predicate.keys(),
       () => {
         this.pagingParams = new PagingParams();
         this.activityRegistry.clear();
@@ -36,6 +36,8 @@ export default class ActivityStore {
   }
 
   setPredicate = (predicate: string, value: string | Date) => {
+    console.log('here');
+    
     const resetPredicate = () => {
       this.predicate.forEach((value, key) => {
         if (key !== 'startDate') this.predicate.delete(key);
@@ -95,7 +97,6 @@ export default class ActivityStore {
       }, {} as { [key: string]: Activity[] })
     )
   }
-
 
   loadActivities = async () => {
     try {
