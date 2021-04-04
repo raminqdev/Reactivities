@@ -26,3 +26,12 @@ for debuging in vs code
 1- we need .vscode file ---> ctrl+shift+p --> generate assets for build and debuging
 2- press run and debug button 
 3- choose .Net Core Attach  ---> hit run -->search for  "Api.exe" ---> hit enter
+-----------------------------------------------------------
+for auto-import:
+
+if you use "C# extension" for VSCode:
+1-Right click on C# extension
+2-"Extension settings"
+3-In opened "Settings" tab, add import in search area
+4-Enable Checkbox (Screenshot of this step)
+5-Enjoy autoimport without "special" extension (Screenshot)

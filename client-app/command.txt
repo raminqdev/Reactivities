@@ -8,9 +8,12 @@ select all same words                                                    Ctrl + 
 -----------------------------------------------------------------------------
 React Developer Tools (chrome extensions)
 ES7 React/Redux/GraphQL/React-Native snippets  (vs code extension) for rfce 
-
+-----------------------------------------------------------------------------
 File -> Auto Save
 File -> Prefrences -> Keyboard Shortcuts
+-----------------------------------------------------------------------------
+
+
 -----------------------------------------------------------------------------
 npm install mobx mobx-react-lite 
 
