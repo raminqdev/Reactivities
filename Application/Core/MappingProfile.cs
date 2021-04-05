@@ -2,12 +2,13 @@
 using Application.Activities;
 using Application.Comments;
 using Application.Interfaces;
+using Application.Profiles;
 using AutoMapper;
 using Domain;
 
 namespace Application.Core
 {
-    public class MappingProfile : Profile
+    public class MappingProfile : AutoMapper.Profile
     {
         public MappingProfile()
         {
@@ -58,6 +59,9 @@ namespace Application.Core
                 .ForMember(d => d.Image, o
                     => o.MapFrom(s => s.Author.Photos
                         .FirstOrDefault(p => p.IsMain).Url));
+
+
+        
         }
     }
 }
