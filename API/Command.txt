@@ -2,6 +2,7 @@
 
 
 -----------------------------------------------------------
+dotnet new sln -n Reactivities
 dotnet new classlib -n Infrastracture
 dotnet sln add Infrastracture
 dotnet add reference ../Application

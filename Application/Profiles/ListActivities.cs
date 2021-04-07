@@ -1,11 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using Application.Activities;
 using Application.Core;
 using Application.Interfaces;
 using AutoMapper;
@@ -20,6 +17,7 @@ namespace Application.Profiles
     {
         public class Query : IRequest<Result<IList<UserActivityDto>>>
         {
+            public string Username { get; set; }
             public string Predicate { get; set; }
         }
 
@@ -27,29 +25,30 @@ namespace Application.Profiles
         {
             private readonly DataContext _context;
             private readonly IMapper _mapper;
-            private readonly IUserAccessor _userAccessor;
 
-            public Handler(DataContext context, IMapper mapper, IUserAccessor userAccessor)
+            public Handler(DataContext context, IMapper mapper)
             {
                 _context = context;
                 _mapper = mapper;
-                _userAccessor = userAccessor;
             }
 
             public async Task<Result<IList<UserActivityDto>>> Handle(Query request, CancellationToken cancellationToken)
             {
-                var result = new List<UserActivityDto>();
+                var query = _context.ActivityAttendees
+                                .Where(u => u.AppUser.UserName == request.Username)
+                                .OrderBy(a => a.Activity.Date)
+                                .ProjectTo<UserActivityDto>(_mapper.ConfigurationProvider)
+                                .AsQueryable();
 
-                switch (request.Predicate)
+                query = request.Predicate switch
                 {
-                    case "past":
-                        result = await _context.Activities
-                            .Where(a => a.Date < DateTime.UtcNow)
-                            .ProjectTo<UserActivityDto>(_mapper.ConfigurationProvider)
-                            .ToListAsync();
-                        break;
-                }
+                    "past" => query.Where(a => a.Date <= DateTime.Now),
+                    "hosting" => query.Where(a => a.HostUsername == request.Username),
+                    _ => query.Where(a => a.Date >= DateTime.Now)  //default case is future events
+                };
 
+                var activities = await query.ToListAsync();
+                return Result<IList<UserActivityDto>>.Success(activities);
             }
         }
     }

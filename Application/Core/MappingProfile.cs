@@ -17,10 +17,9 @@ namespace Application.Core
             CreateMap<Activity, Activity>();
 
             CreateMap<Activity, ActivityDto>()
-                .ForMember(destination => destination.HostUsername,
-                    options
-                        => options.MapFrom(source => source
-                            .Attendees.FirstOrDefault(x => x.IsHost).AppUser.UserName));
+                .ForMember(destination => destination.HostUsername, options
+                         => options.MapFrom(source => source
+                             .Attendees.FirstOrDefault(x => x.IsHost).AppUser.UserName));
 
             CreateMap<ActivityAttendee, AttendeeDto>()
                 .ForMember(d => d.DisplayName, o
@@ -57,11 +56,19 @@ namespace Application.Core
                 .ForMember(d => d.DisplayName, o
                     => o.MapFrom(s => s.Author.DisplayName))
                 .ForMember(d => d.Image, o
-                    => o.MapFrom(s => s.Author.Photos
-                        .FirstOrDefault(p => p.IsMain).Url));
+                    => o.MapFrom(s => s.Author.Photos.FirstOrDefault(p => p.IsMain).Url));
+
+            CreateMap<ActivityAttendee, UserActivityDto>()
+                .ForMember(d => d.Title, o
+                    => o.MapFrom(s => s.Activity.Title))
+                .ForMember(d => d.Date, o
+                    => o.MapFrom(s => s.Activity.Date))
+                .ForMember(d => d.Category, o
+                    => o.MapFrom(s => s.Activity.Category))
+                .ForMember(d => d.Category, o
+                    => o.MapFrom(s => s.Activity.Category))
 
 
-        
         }
     }
 }
