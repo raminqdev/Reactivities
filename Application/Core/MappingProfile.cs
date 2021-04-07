@@ -66,7 +66,7 @@ namespace Application.Core
                 .ForMember(d => d.Category, o
                     => o.MapFrom(s => s.Activity.Category))
                 .ForMember(d => d.Category, o
-                    => o.MapFrom(s => s.Activity.Category))
+                    => o.MapFrom(s => s.Activity.Category));
 
 
         }
