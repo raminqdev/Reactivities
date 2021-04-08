@@ -106,6 +106,9 @@ const Profiles = {
   },
   setMainPhoto: (id: string) => requests.post(`/photos/${id}/setmain`, {}),
   deletePhoto: (id: string) => requests.del(`/photos/${id}`),
+  //We need to use Partial<Profile> for the type here as we are only 
+  //allowing the user to update 2 of the properties contained in the Profile type.
+  updateProfile: (profile: Partial<Profile>) => requests.put(`/profiles`, profile),
   updateFollowing: (username: string) => requests.post(`/follow/${username}`, {}),
   listFollowing: (username: string, predicate: string) =>
     requests.get<Profile[]>(`/follow/${username}?predicate=` + predicate),
