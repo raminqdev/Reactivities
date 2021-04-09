@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { Grid, Loader } from 'semantic-ui-react';
-import LoadingComponent from '../../../app/layout/LoadingComponent';
 import { PagingParams } from '../../../app/models/pagination';
 import { useStore } from '../../../app/stores/store';
 import ActivityFilters from './ActivityFilters';

@@ -1,17 +1,16 @@
-﻿http://localhost:5000/swagger/index.html
+﻿
+http://localhost:5000/swagger/index.html
 
-
------------------------------------------------------------
+--------------------------------------------------------------------------------
 dotnet new sln -n Reactivities
 dotnet new classlib -n Infrastracture
 dotnet sln add Infrastracture
 dotnet add reference ../Application
 dotnet add reference ../Infrastracture
 dotnet restore
-
-
-------------------------------------------------------------
+---------------------------------------------------------------------------------
 dotnet tool install --global dotnet-ef
+dotnet tool update --global dotnet-ef
 
 dotnet ef migrations add InitialCreation -p Persistence -s API
 dotnet ef migrations remove -p Persistence -s API
@@ -19,15 +18,13 @@ dotnet ef database drop -p .\Persistence\ -s .\API\
 
  p:persistence project 
  s:startup project
-
-
------------------------------------------------------------
+--------------------------------------------------------------------------------
 for debuging in vs code
 
 1- we need .vscode file ---> ctrl+shift+p --> generate assets for build and debuging
 2- press run and debug button 
 3- choose .Net Core Attach  ---> hit run -->search for  "Api.exe" ---> hit enter
------------------------------------------------------------
+--------------------------------------------------------------------------------
 for auto-import:
 
 if you use "C# extension" for VSCode:
@@ -36,3 +33,8 @@ if you use "C# extension" for VSCode:
 3-In opened "Settings" tab, add import in search area
 4-Enable Checkbox (Screenshot of this step)
 5-Enjoy autoimport without "special" extension (Screenshot)
+---------------------------------------------------------------------------------
+Docker:
+
+docker run --name dev -e POSTGRES_USER=admin -e POSTGRES_PASSWORD=secret -p 5432:5432 -d postgres:latest
+

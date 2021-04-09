@@ -36,6 +36,7 @@ namespace API.Extensions
                     };
 
                     //SignalR 
+                    //accept bearer token from Url
                     opt.Events = new JwtBearerEvents
                     {
                         OnMessageReceived = context =>

@@ -44,7 +44,7 @@ namespace API.Controllers
             if (result.Succeeded)
             {
                 return CreateUserDtoObject(user);
-            }
+            } 
 
             return Unauthorized();
         }
