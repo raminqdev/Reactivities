@@ -1,6 +1,7 @@
 ﻿
 http://localhost:5000/swagger/index.html
 
+https://pamir-reactivites.herokuapp.com/
 --------------------------------------------------------------------------------
 dotnet new sln -n Reactivities
 dotnet new classlib -n Infrastracture

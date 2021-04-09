@@ -51,3 +51,6 @@ https://create-react-app.dev/docs/adding-custom-environment-variables/
 
 Creating a Production Build:
 https://create-react-app.dev/docs/production-build/
+
+Scan your site now:
+https://securityheaders.com/
