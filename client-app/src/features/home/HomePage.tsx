@@ -1,13 +1,23 @@
 import { observer } from 'mobx-react-lite';
 import React from 'react';
+import GoogleLogin from 'react-google-login';
 import { Link } from 'react-router-dom';
-import { Button, Container, Header, Image, Segment } from 'semantic-ui-react';
+import { Button, Container, Divider, Header, Image, Segment } from 'semantic-ui-react';
 import { useStore } from '../../app/stores/store';
 import LoginForm from '../users/LoginForm';
 import RegisterForm from '../users/RegisterForm';
 
 export default observer(function HomePage() {
   const { userStore, modalStore } = useStore();
+
+
+  const responseGoogle = (response: any) => {
+    console.log(response);
+    var res = response.profileObj;
+    console.log(res);
+    debugger;
+    //this.signup(response);
+  }
 
   return (
     <Segment inverted textAlign='center' vertical className='masthead' >
@@ -34,6 +44,13 @@ export default observer(function HomePage() {
               <Button onClick={() => modalStore.openModal(<RegisterForm />)} size='huge' inverted>
                 Register!
               </Button>
+              <Divider horizontal inverted>Or</Divider>
+              <GoogleLogin
+                clientId="ac164us866id6vaq1t.apps.googleusercontent.com"
+                buttonText="Login with Google"
+                onSuccess={responseGoogle}
+                onFailure={responseGoogle}
+              ></GoogleLogin>
             </>
           )
         }
