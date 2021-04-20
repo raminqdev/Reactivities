@@ -2,6 +2,7 @@
 http://localhost:5000/swagger/index.html
 
 https://pamir-reactivites.herokuapp.com/
+
 --------------------------------------------------------------------------------
 dotnet new sln -n Reactivities
 dotnet new classlib -n Infrastracture
@@ -19,6 +20,13 @@ dotnet ef database drop -p .\Persistence\ -s .\API\
 
  p:persistence project 
  s:startup project
+--------------------------------------------------------------------------------
+git checkout -b gmailLogin  : create branch
+git push origin gmailLogin  : push to git
+
+git checkout master 
+git merge gmailLogin
+git push origin master
 --------------------------------------------------------------------------------
 for debuging in vs code
 

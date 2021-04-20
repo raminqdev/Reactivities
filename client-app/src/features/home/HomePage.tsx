@@ -10,15 +10,6 @@ import RegisterForm from '../users/RegisterForm';
 export default observer(function HomePage() {
   const { userStore, modalStore } = useStore();
 
-
-  const responseGoogle = (response: any) => {
-    console.log(response);
-    var res = response.profileObj;
-    console.log(res);
-    debugger;
-    //this.signup(response);
-  }
-
   return (
     <Segment inverted textAlign='center' vertical className='masthead' >
       <Container text>
@@ -45,12 +36,12 @@ export default observer(function HomePage() {
                 Register!
               </Button>
               <Divider horizontal inverted>Or</Divider>
-              <GoogleLogin
+              {/* <GoogleLogin
                 clientId="ac164us866id6vaq1t.apps.googleusercontent.com"
                 buttonText="Login with Google"
                 onSuccess={responseGoogle}
                 onFailure={responseGoogle}
-              ></GoogleLogin>
+              ></GoogleLogin> */}
             </>
           )
         }

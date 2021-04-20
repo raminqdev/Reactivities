@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Infrastructure.Security;
 using Microsoft.AspNetCore.Authorization;
+using System;
 
 namespace API.Extensions
 {
@@ -32,7 +33,9 @@ namespace API.Extensions
                         ValidateIssuerSigningKey = true, //this say use the super secret key
                         IssuerSigningKey = key,
                         ValidateIssuer = false,
-                        ValidateAudience = false
+                        ValidateAudience = false,
+                        ValidateLifetime = true,
+                        ClockSkew = TimeSpan.Zero //default 5 minutes removed
                     };
 
                     //SignalR 

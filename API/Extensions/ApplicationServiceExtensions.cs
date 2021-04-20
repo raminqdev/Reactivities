@@ -30,7 +30,7 @@ namespace API.Extensions
                 if (env == "Development")
                 {
                     connStr = config.GetConnectionString("PostgreSqlConnection");
-                   //connStr = config.GetConnectionString("SQLiteConnection");
+                    //connStr = config.GetConnectionString("SQLiteConnection");
                 }
                 else
                 {
@@ -63,6 +63,7 @@ namespace API.Extensions
                     .AllowAnyMethod()
                     .AllowAnyHeader()
                     .AllowCredentials()  //for SignalR
+                    .WithExposedHeaders("WWW-Authenticate", "Pagination") //for session refresh token
                     .WithOrigins("http://localhost:3000")
                 );
             });

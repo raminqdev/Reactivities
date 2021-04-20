@@ -24,7 +24,7 @@ axios.interceptors.request.use(config => {
 
 axios.interceptors.response.use(async response => {
   if (process.env.NODE_ENV === 'development') await sleep(500)
-  
+
   const pagination = response.headers['pagination'];
   if (pagination) {
     response.data = new PaginatedResult(response.data, JSON.parse(pagination));
@@ -36,7 +36,7 @@ axios.interceptors.response.use(async response => {
 }, (error: AxiosError) => {
   //we may not have error.response so with  "!"  
   //we say typescript we know what we are doing
-  const { data, status, config } = error.response!;
+  const { data, status, config, headers } = error.response!;
   switch (status) {
     case 400:
       if (typeof data === 'string') {
@@ -56,7 +56,10 @@ axios.interceptors.response.use(async response => {
       }
       break;
     case 401:
-      toast.error('unathorized');
+      if (status === 401 && headers['www-authenticate'].startsWith('Bearer error="invalid_token"')) {
+        store.userStore.logOut();
+        toast.error('Session expired - please login again');
+      }
       break;
     case 404:
       history.push('not-found');
@@ -92,7 +95,8 @@ const Account = {
   current: () => requests.get<User>('/account'),
   // request with UserFormValues and recieve User
   login: (user: UserFormValues) => requests.post<User>('/account/login', user),
-  register: (user: UserFormValues) => requests.post<User>('/account/register', user)
+  register: (user: UserFormValues) => requests.post<User>('/account/register', user),
+  refreshToken: () => requests.post<User>('/account/refreshToken', {})
 }
 
 const Profiles = {

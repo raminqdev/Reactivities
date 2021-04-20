@@ -29,7 +29,6 @@ npm install react-cropper
 npm install @microsoft/signalr
 npm install react-infinite-scroller
 npm install @types/react-infinite-scroller
-npm install react-google-login
 npm install rimraf --save-dev
 npm run build
 ----------------------------------------------------------------------------------
