@@ -3,6 +3,7 @@ using API.Middlewares;
 using API.SignalR;
 using Application.Activities;
 using FluentValidation.AspNetCore;
+using Infrastructure.Email;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

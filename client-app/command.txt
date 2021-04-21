@@ -55,3 +55,6 @@ https://create-react-app.dev/docs/production-build/
 
 Scan your site now:
 https://securityheaders.com/
+
+Temporary Email:
+https://10minutemail.com/
